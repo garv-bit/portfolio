@@ -5,7 +5,6 @@ const Portfolio = () => {
   const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
-    // Create magical particles
     const particlesContainer = document.getElementById("particles");
     if (particlesContainer) {
       for (let i = 0; i < 50; i++) {
@@ -18,7 +17,6 @@ const Portfolio = () => {
       }
     }
 
-    // Intersection Observer for scroll animations
     const observerOptions = {
       threshold: 0.1,
       rootMargin: "0px 0px -100px 0px",
@@ -51,39 +49,36 @@ const Portfolio = () => {
   const projects = [
     {
       id: 1,
-      title: "🔮 Project Name 1",
+      title: "📄 Smart Document Q&A System",
       description:
-        "A brief description of your AI/ML project. Explain what problem it solves, what technologies you used, and what makes it special. This is your chance to showcase your magical abilities!",
-      tags: ["Python", "TensorFlow", "NLP"],
-      githubUrl: "https://github.com/garv-bit/project-1", // Add your actual GitHub URLs
-      liveUrl: "", // Add live demo URL if available
+        "An intelligent RAG-based system that allows users to upload PDFs and chat with them using natural language. Built with LangChain for document processing, Groq's Llama 3.3 for fast inference, ChromaDB for vector storage, and Streamlit for the interface. Features include chat history, source citations, and semantic search.",
+      tags: ["Python", "RAG", "LangChain", "Groq", "Streamlit", "ChromaDB"],
+      github: "https://github.com/garv-bit/document-qa-rag",
+      demo: null,
     },
     {
       id: 2,
-      title: "⚡ Project Name 2",
+      title: "⚡ Dormant-Aware Fraud Detection",
       description:
-        "Another incredible project that demonstrates your skills. Talk about the challenges you faced and how you overcame them. Show your problem-solving wizardry!",
-      tags: ["PyTorch", "Computer Vision", "OpenCV"],
-      githubUrl: "https://github.com/garv-bit/project-2",
-      liveUrl: "",
+        "Advanced fraud detection system focusing on dormant account reactivation patterns. Uses machine learning to identify suspicious behavior in accounts that have been inactive, addressing a critical gap in traditional fraud detection systems.",
+      tags: ["Python", "Machine Learning", "Fraud Detection", "Data Science"],
+      github: null,
+      demo: null,
     },
     {
       id: 3,
-      title: "🪄 Project Name 3",
+      title: "🪄 Your Next Project",
       description:
-        "Your third amazing project. Whether it's a full-stack application, a machine learning model, or an innovative tool, this is where you shine!",
-      tags: ["React", "Node.js", "MongoDB"],
-      githubUrl: "https://github.com/garv-bit/project-3",
-      liveUrl: "",
+        "This space is reserved for your next magical creation. Whether it's a full-stack application, a machine learning model, or an innovative tool, this is where you'll showcase your next breakthrough!",
+      tags: ["Coming Soon"],
+      github: null,
+      demo: null,
     },
   ];
 
   return (
     <div className="portfolio-container">
-      {/* Magical particles background */}
       <div className="particles" id="particles"></div>
-
-      {/* Navigation */}
       <nav className="main-nav">
         <ul>
           <li>
@@ -136,8 +131,6 @@ const Portfolio = () => {
           </li>
         </ul>
       </nav>
-
-      {/* Hero Section */}
       <section id="home" className="hero-section">
         <div className="container">
           <h1 className="hero-title">Garv Patel</h1>
@@ -165,8 +158,6 @@ const Portfolio = () => {
           </div>
         </div>
       </section>
-
-      {/* About Section */}
       <section id="about" className="about-section">
         <div className="container">
           <h2 className="section-title">About the Wizard</h2>
@@ -194,8 +185,6 @@ const Portfolio = () => {
           </div>
         </div>
       </section>
-
-      {/* Projects Section */}
       <section id="projects" className="projects-section">
         <div className="container">
           <h2 className="section-title">Magical Creations</h2>
@@ -211,35 +200,49 @@ const Portfolio = () => {
                     </span>
                   ))}
                 </div>
-                <div className="project-links">
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="project-btn"
-                    >
-                      💻 View Code
-                    </a>
-                  )}
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="project-btn"
-                    >
-                      🚀 Live Demo
-                    </a>
-                  )}
-                </div>
+                {(project.github || project.demo) && (
+                  <div
+                    style={{
+                      marginTop: "1.5rem",
+                      display: "flex",
+                      gap: "1rem",
+                    }}
+                  >
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-primary"
+                        style={{
+                          padding: "0.7rem 1.5rem",
+                          fontSize: "0.95rem",
+                        }}
+                      >
+                        View Code
+                      </a>
+                    )}
+                    {project.demo && (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-secondary"
+                        style={{
+                          padding: "0.7rem 1.5rem",
+                          fontSize: "0.95rem",
+                        }}
+                      >
+                        Live Demo
+                      </a>
+                    )}
+                  </div>
+                )}
               </div>
             ))}
           </div>
         </div>
       </section>
-
-      {/* Contact Section */}
       <section id="contact" className="contact-section">
         <div className="container">
           <h2 className="section-title">Send an Owl</h2>
@@ -278,10 +281,8 @@ const Portfolio = () => {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
       <footer className="main-footer">
-        <p>&copy; 2026 Garv Patel. Crafted with magic and code. ⚡</p>
+        <p>&copy; 2026 Garv. Crafted with magic and code. ⚡</p>
       </footer>
     </div>
   );
